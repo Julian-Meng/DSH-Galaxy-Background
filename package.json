@@ -1,0 +1,55 @@
+{
+  "name": "dsh-galaxy-background",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Animated spiral-galaxy wallpaper for the DSH conversation panel, with live speed, opacity, panel-blur and particle-count controls in Settings.",
+  "type": "module",
+  "license": "WTFPL",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Julian-Meng/DSH-Galaxy-Background.git"
+  },
+  "main": "index.js",
+  "icon": "./deepseek.svg",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./deepseek.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "deepseek.svg",
+    "README.md",
+    "docs"
+  ],
+  "scripts": {
+    "check": "node tests/smoke.mjs"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "galaxy",
+    "background",
+    "webgl"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  }
+}
