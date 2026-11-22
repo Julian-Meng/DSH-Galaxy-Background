@@ -3,8 +3,8 @@
 [English](docs/README_EN.md) | 中文
 
 在 DSH 对话面板背后绘制动态螺旋星系的壁纸插件。星系参数与 shader 数学来自
-`Julian-Meng.github.io` 的 three.js 场景，改写为裸 WebGL 实现，因此**没有运行时依赖**：
-不需要 three.js、不需要打包器、不加载 CDN。
+[Julian-Meng.github.io](https://github.com/Julian-Meng/Julian-Meng.github.io) 的 three.js 场景，
+改写为裸 WebGL 实现，因此**没有运行时依赖**：不需要 three.js、不需要打包器、不加载 CDN。
 
 ## 特性
 
@@ -16,6 +16,8 @@
 - 面板离开视口或窗口隐藏时暂停渲染；`prefers-reduced-motion` 下冻结动画。
 - 图标位统一使用 `deepseek.svg`（插件图标与设置页导航图标）。
 - 设置页提供分组控件；「旋转速度」滑杆使用 WebGL 火焰轨道。
+- 背景默认不做磨砂或遮罩（保持清晰星系），输入框默认开启玻璃磨砂；两者都可在设置里调节
+  模糊度与遮罩浓度。
 
 ## 环境要求
 
@@ -46,6 +48,7 @@ plugin_manager action=install_bundle target="<本目录的绝对路径>"
 | --- | --- |
 | 星系 | `enabled`、`particleCount`、`branches`、`spin`、`radius`、`backgroundStars` |
 | 外观 | `opacity`、`starSize`、`exposure` |
+| 玻璃 | `chatBlur`、`chatTint`、`composerGlass`、`composerBlur`、`composerTint` |
 | 运动 | `speed`、`parallax`、`cameraTilt`、`cameraDistance` |
 | 行为 | `showOnHome`、`pauseWhenHidden`、`respectReducedMotion` |
 
@@ -77,4 +80,4 @@ node tests/smoke.mjs
 ## 许可
 
 WTFPL，见 [LICENSE](LICENSE)。星系参数与 shader 数学改编自作者本人的
-`Julian-Meng.github.io` 场景。
+[Julian-Meng.github.io](https://github.com/Julian-Meng/Julian-Meng.github.io) 场景。

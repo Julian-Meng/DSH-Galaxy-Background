@@ -106,6 +106,47 @@ export function createSettingsPage(store, t, ctx) {
       ),
       h(
         Group,
+        { title: t('glass') },
+        h(RangeRow, {
+          t,
+          name: 'chatBlur',
+          labelKey: 'chatBlur',
+          hintKey: 'chatBlurHint',
+          value: config.chatBlur,
+          onChange: patch('chatBlur'),
+        }),
+        h(RangeRow, {
+          t,
+          name: 'chatTint',
+          labelKey: 'chatTint',
+          hintKey: 'chatTintHint',
+          value: config.chatTint,
+          onChange: patch('chatTint'),
+        }),
+        h(BoolRow, {
+          t,
+          labelKey: 'composerGlass',
+          hintKey: 'composerGlassHint',
+          value: config.composerGlass,
+          onChange: patch('composerGlass'),
+        }),
+        h(RangeRow, {
+          t,
+          name: 'composerBlur',
+          labelKey: 'composerBlur',
+          value: config.composerBlur,
+          onChange: patch('composerBlur'),
+        }),
+        h(RangeRow, {
+          t,
+          name: 'composerTint',
+          labelKey: 'composerTint',
+          value: config.composerTint,
+          onChange: patch('composerTint'),
+        }),
+      ),
+      h(
+        Group,
         { title: t('motion') },
         h(MotionSpeedRow, { t, value: config.speed, onChange: patch('speed') }),
         h(RangeRow, {

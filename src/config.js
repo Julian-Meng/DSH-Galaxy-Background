@@ -20,11 +20,12 @@ export const FIELDS = {
   starSize: { kind: 'range', def: 1, min: 0.3, max: 2.5, step: 0.1 },
   exposure: { kind: 'range', def: 1, min: 0.2, max: 3, step: 0.05 },
 
-  // Glass (reserved for the blur layer)
-  chatBlur: { kind: 'range', def: 12, min: 0, max: 40, step: 1 },
-  chatTint: { kind: 'range', def: 0.18, min: 0, max: 1, step: 0.02 },
+  // Glass: the background is unblurred by default; the composer is frosted.
+  chatBlur: { kind: 'range', def: 0, min: 0, max: 40, step: 1 },
+  chatTint: { kind: 'range', def: 0, min: 0, max: 1, step: 0.02 },
   composerGlass: { kind: 'bool', def: true },
   composerBlur: { kind: 'range', def: 16, min: 0, max: 40, step: 1 },
+  composerTint: { kind: 'range', def: 0.18, min: 0, max: 1, step: 0.02 },
 
   // Camera
   cameraTilt: { kind: 'range', def: 29, min: 5, max: 85, step: 1 },

@@ -3,9 +3,10 @@
 English | [中文](../README.md)
 
 An animated spiral-galaxy wallpaper for the DSH conversation panel. The galaxy
-parameters and shader math come from the three.js scene on
-`Julian-Meng.github.io` and are reimplemented on raw WebGL, so the plugin has **no
-runtime dependencies**: no three.js, no bundler, no CDN.
+parameters and shader math come from the
+[Julian-Meng.github.io](https://github.com/Julian-Meng/Julian-Meng.github.io) three.js scene
+and are reimplemented on raw WebGL, so the plugin has **no runtime dependencies**: no
+three.js, no bundler, no CDN.
 
 ## Features
 
@@ -22,6 +23,8 @@ runtime dependencies**: no three.js, no bundler, no CDN.
   navigation glyph.
 - Grouped controls in **Settings → Galaxy background**; the rotation-speed slider
   uses a WebGL fire track.
+- The background is unblurred and unmasked by default (a crisp galaxy); the composer
+  starts frosted. Both blur and mask are adjustable in Settings.
 
 ## Requirements
 
@@ -54,6 +57,7 @@ bundle or restart the desktop app to load the new build.
 | --- | --- |
 | Galaxy | `enabled`, `particleCount`, `branches`, `spin`, `radius`, `backgroundStars` |
 | Appearance | `opacity`, `starSize`, `exposure` |
+| Glass | `chatBlur`, `chatTint`, `composerGlass`, `composerBlur`, `composerTint` |
 | Motion | `speed`, `parallax`, `cameraTilt`, `cameraDistance` |
 | Behavior | `showOnHome`, `pauseWhenHidden`, `respectReducedMotion` |
 
@@ -85,4 +89,5 @@ node tests/smoke.mjs
 ## License
 
 WTFPL — see [LICENSE](../LICENSE). Galaxy parameters and shader math are adapted from
-the author's own `Julian-Meng.github.io` scene.
+the author's own
+[Julian-Meng.github.io](https://github.com/Julian-Meng/Julian-Meng.github.io) scene.
