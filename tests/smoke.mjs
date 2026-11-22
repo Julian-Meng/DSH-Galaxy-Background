@@ -74,6 +74,10 @@ const documentStub = {
 
 const React = {
   createElement: (type, props, ...children) => ({ type, props, children }),
+  useState: (initial) => [typeof initial === 'function' ? initial() : initial, () => {}],
+  useReducer: (reducer, initial) => [initial, () => {}],
+  useEffect: () => {},
+  useRef: (initial) => ({ current: initial }),
 };
 
 const registrations = [];

@@ -20,6 +20,8 @@ runtime dependencies**: no three.js, no bundler, no CDN.
   freezes under `prefers-reduced-motion`.
 - A single icon asset, `deepseek.svg`, used for the plugin icon and the Settings
   navigation glyph.
+- Grouped controls in **Settings → Galaxy background**; the rotation-speed slider
+  uses a WebGL fire track.
 
 ## Requirements
 
@@ -55,7 +57,8 @@ bundle or restart the desktop app to load the new build.
 | Motion | `speed`, `parallax`, `cameraTilt`, `cameraDistance` |
 | Behavior | `showOnHome`, `pauseWhenHidden`, `respectReducedMotion` |
 
-Values persist in `localStorage` under `dsh-galaxy-background:v1`.
+Adjust them in **Settings → Galaxy background**; changes apply immediately. Values
+persist in `localStorage` under `dsh-galaxy-background:v1`.
 
 ## Structure
 
@@ -64,7 +67,9 @@ Values persist in `localStorage` under `dsh-galaxy-background:v1`.
 | `package.json` | Bundle manifest: `dsh.bundle.patch` + `dsh.client` |
 | `cordis.patch.yml` | Inserts the plugin row |
 | `index.js` | Host half (`apply() {}`) |
-| `client.js` | Browser module: galaxy sampler, WebGL engine, scene mounting, Settings seat |
+| `client.js` | Generated single-file browser bundle (do not edit) |
+| `src/` | Split sources: config, sampler, WebGL engine, scene mounting, Settings UI |
+| `scripts/build.mjs` | Zero-dependency bundler joining `src/` into `client.js` |
 | `locale/*.json` | Plugin title and description |
 | `deepseek.svg` | Icon asset |
 | `tests/smoke.mjs` | Module contract test |
@@ -72,6 +77,7 @@ Values persist in `localStorage` under `dsh-galaxy-background:v1`.
 ## Development
 
 ```text
+node scripts/build.mjs   # rebuild client.js after editing src/
 node --check client.js
 node tests/smoke.mjs
 ```

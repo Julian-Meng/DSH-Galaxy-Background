@@ -15,6 +15,7 @@
   鼠标事件。
 - 面板离开视口或窗口隐藏时暂停渲染；`prefers-reduced-motion` 下冻结动画。
 - 图标位统一使用 `deepseek.svg`（插件图标与设置页导航图标）。
+- 设置页提供分组控件；「旋转速度」滑杆使用 WebGL 火焰轨道。
 
 ## 环境要求
 
@@ -48,7 +49,8 @@ plugin_manager action=install_bundle target="<本目录的绝对路径>"
 | 运动 | `speed`、`parallax`、`cameraTilt`、`cameraDistance` |
 | 行为 | `showOnHome`、`pauseWhenHidden`、`respectReducedMotion` |
 
-配置持久化在 `localStorage` 的 `dsh-galaxy-background:v1` 下。
+在 **设置 → 星系背景** 中调整，滑杆拖动即时生效；配置持久化在 `localStorage` 的
+`dsh-galaxy-background:v1` 下。
 
 ## 目录结构
 
@@ -57,7 +59,9 @@ plugin_manager action=install_bundle target="<本目录的绝对路径>"
 | `package.json` | 插件清单：`dsh.bundle.patch` + `dsh.client` |
 | `cordis.patch.yml` | 插入插件行 |
 | `index.js` | Host 半边（`apply() {}`） |
-| `client.js` | 浏览器模块：恒星采样、WebGL 引擎、场景挂载、设置页座位 |
+| `client.js` | 构建产物，浏览器实际加载的单文件（不要手改） |
+| `src/` | 拆分后的源码：配置、采样、WebGL 引擎、场景挂载、设置页与控件 |
+| `scripts/build.mjs` | 零依赖打包脚本，把 `src/` 合成 `client.js` |
 | `locale/*.json` | 插件标题与描述 |
 | `deepseek.svg` | 图标资源 |
 | `tests/smoke.mjs` | 模块契约测试 |
@@ -65,6 +69,7 @@ plugin_manager action=install_bundle target="<本目录的绝对路径>"
 ## 开发
 
 ```text
+node scripts/build.mjs   # 修改 src/ 后重新生成 client.js
 node --check client.js
 node tests/smoke.mjs
 ```
